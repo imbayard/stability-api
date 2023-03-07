@@ -175,7 +175,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-graphql/dev/1678146947660-2023-03-06T23:55:47.660Z/serverless-graphql.zip"
+                "S3Key": "serverless/serverless-graphql/dev/1678149931954-2023-03-07T00:45:31.954Z/serverless-graphql.zip"
               },
               "Handler": "src/index.graphqlHandler",
               "Runtime": "nodejs12.x",
@@ -193,14 +193,14 @@
               "GraphqlLogGroup"
             ]
           },
-          "GraphqlLambdaVersionO0Q3xC4LUuChjOdiEBVpmvIL2I107Dia3g1YjhXk": {
+          "GraphqlLambdaVersionsK7gU8B1JzPmNMZEdbw7iTUui3UHUpW9zgzE9JJt8": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GraphqlLambdaFunction"
               },
-              "CodeSha256": "GX9VN3Zt+xUVHobY5b3q7H5sHG9dAxHAzdqShJYA1so="
+              "CodeSha256": "EpwFnynLB62jhje4Pwv9yrbvw/pbDNUHK+ZXl9nQXsU="
             }
           },
           "ApiGatewayRestApi": {
@@ -321,7 +321,7 @@
               "GraphqlLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1678146937369": {
+          "ApiGatewayDeployment1678149923374": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -384,7 +384,7 @@
           "GraphqlLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GraphqlLambdaVersionO0Q3xC4LUuChjOdiEBVpmvIL2I107Dia3g1YjhXk"
+              "Ref": "GraphqlLambdaVersionsK7gU8B1JzPmNMZEdbw7iTUui3UHUpW9zgzE9JJt8"
             },
             "Export": {
               "Name": "sls-serverless-graphql-dev-GraphqlLambdaFunctionQualifiedArn"
@@ -541,7 +541,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GraphqlLambdaVersionO0Q3xC4LUuChjOdiEBVpmvIL2I107Dia3g1YjhXk"
+        "versionLogicalId": "GraphqlLambdaVersionsK7gU8B1JzPmNMZEdbw7iTUui3UHUpW9zgzE9JJt8"
       }
     },
     "configValidationMode": "warn",
@@ -563,7 +563,7 @@
     "artifact": "C:\\Users\\bayar\\dev\\stable-api\\.serverless\\serverless-graphql.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/serverless-graphql/dev/1678146947660-2023-03-06T23:55:47.660Z",
+    "artifactDirectoryName": "serverless/serverless-graphql/dev/1678149931954-2023-03-07T00:45:31.954Z",
     "artifact": "serverless-graphql.zip"
   }
 }

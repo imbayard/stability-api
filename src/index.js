@@ -11,5 +11,5 @@ module.exports.graphqlHandler = server.createHandler({
   cors: {
     origin: '*',
     credentials: true,
-  },
+  }
 })
