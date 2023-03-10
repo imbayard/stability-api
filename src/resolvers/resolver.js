@@ -41,4 +41,10 @@ module.exports.resolvers = {
         return userInfo;
       },
     },
+    Mutation: {
+        createNewAction(_, {userId, action}) {
+            console.log(action)
+            return true
+        }
+    }
   };

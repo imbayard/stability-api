@@ -31,6 +31,18 @@ module.exports.typeDefs = gql`
         active: Boolean!
     }
 
+    input ActionInput {
+        name: String!,
+        points: Int!,
+        category: String!,
+        timesSet: Int!,
+        timesCompleted: Int!,
+        completedTimeline: [Int]!
+        createdDate: String!,
+        deletedDate: String,
+        active: Boolean!
+    }
+
     type Week {
         pointsSet: Int!,
         pointsComplete: Int!,
@@ -41,6 +53,7 @@ module.exports.typeDefs = gql`
 
     type ActionImpl {
         name: String!,
+        category: String!,
         points: Int!
     }
 
@@ -66,6 +79,10 @@ module.exports.typeDefs = gql`
     }
 
     type Query {
-        userInfo(id: String!): User
+        userInfo(id: String!): User!
+    }
+
+    type Mutation {
+        createNewAction(userId: String!, action: ActionInput!): Boolean!
     }
 `
