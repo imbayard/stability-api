@@ -1,6 +1,6 @@
-const { gql } = require('apollo-server-lambda');
+import { gql } from 'apollo-server-lambda';
 
-module.exports.typeDefs = gql`
+export const typeDefs = gql`
 
     type User {
         id: String!,

@@ -1,4 +1,6 @@
-module.exports.resolvers = {
+import db_createNewAction from "../services/create-new-action.js";
+
+export const resolvers = {
     Query: {
       userInfo: (_, args) => {
         const userInfo = {
@@ -42,9 +44,10 @@ module.exports.resolvers = {
       },
     },
     Mutation: {
-        createNewAction(_, {userId, action}) {
-            console.log(action)
-            return true
+        async createNewAction(_, {userId, action}) {
+            console.log('Creating new action...')
+            
+            return await db_createNewAction('asdf', action)
         }
     }
   };
