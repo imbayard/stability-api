@@ -1,8 +1,10 @@
 import db_createNewAction from "../services/create-new-action.js";
+import db_createNewUser from "../services/create-new-user.js";
 
 export const resolvers = {
     Query: {
       userInfo: (_, args) => {
+        // TODO: Make this into real database resolver
         const userInfo = {
             id: '1b2-xd2-dv3',
             name: "Bayard",
@@ -47,7 +49,12 @@ export const resolvers = {
         async createNewAction(_, {userId, action}) {
             console.log('Creating new action...')
             
-            return await db_createNewAction('asdf', action)
+            return await db_createNewAction(userId, action)
+        },
+        async createNewUser(_, { email, userId }) {
+            console.log('Creating new user...')
+
+            return await db_createNewUser(email, userId)
         }
     }
   };

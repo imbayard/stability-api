@@ -3,7 +3,7 @@ import util from 'util'
 
 export default async function db_createNewAction(userId, action) {
     const db = container.database
-
+    console.log(userId)
     action.deletedDate = action.deletedDate ? action.deletedDate : ''
 
     const actionMap = {

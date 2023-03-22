@@ -84,5 +84,6 @@ export const typeDefs = gql`
 
     type Mutation {
         createNewAction(userId: String!, action: ActionInput!): Boolean!
+        createNewUser(email: String!, userId: String!): Boolean!
     }
 `
