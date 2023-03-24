@@ -2,38 +2,41 @@ import { container } from '../config/container.js'
 import util from 'util'
 
 export default async function db_createNewAction(userId, action) {
-    const db = container.database
-    console.log(userId)
-    action.deletedDate = action.deletedDate ? action.deletedDate : ''
-
+    action.deletedDate = action.deletedDate ? action.deletedDate : '';
+  
     const actionMap = {
-        createdDate: {S:action.createdDate},
-        deletedDate: {S: action.deletedDate},
-        completedTimeline: {L: action.completedTimeline},
-        timesSet: {N: action.timesSet.toString()},
-        name: {S: action.name},
-        active: {BOOL: action.active},
-        category: {S: action.category},
-        timesCompleted: {N: action.timesCompleted.toString()},
-        points: {N: action.points.toString()}
-    }
+      createdDate: action.createdDate,
+      deletedDate: action.deletedDate,
+      completedTimeline: action.completedTimeline,
+      timesSet: action.timesSet,
+      name: action.name,
+      active: action.active,
+      category: action.category,
+      timesCompleted: action.timesCompleted,
+      points: action.points,
+    };
+  
     const params = {
-        TableName: container.tables.userInfo,
-        Item: {
-            'id': {S: userId},
-            'actions': {L: [{M: actionMap}]}
-        }
+      TableName: container.tables.userInfo,
+      Key: {
+        'id': userId,
+      },
+      UpdateExpression: 'SET actions = list_append(actions, :newAction)',
+      ExpressionAttributeValues: {
+        ':newAction': [actionMap],
+      },
+      ReturnValues: 'ALL_NEW',
+    };
+  
+    console.log(`PUTTING ACTION: ${util.inspect(actionMap)}`);
+  
+    try {
+      const data = await container.docClient.update(params).promise();
+      console.log(`Item added to table!\n${util.inspect(data.Attributes)}\n\n********************`);
+    } catch (err) {
+      console.error(`ERROR ADDING TO DB:\n${err}\n\n********************`);
     }
-
-    console.log(`PUTTING ACTION: ${util.inspect(actionMap)}`)
-    db.putItem(params, (err, data) => {
-        if (err) {
-            console.error(`ERROR ADDING TO DB:\n${err}\n\n********************`)
-        } else {
-            console.log(`Item added to table!\n${data}\n\n********************`)
-        }
-    })
-
-    return true
-}
+  
+    return true;
+  }
 
