@@ -4,13 +4,13 @@ export const typeDefs = gql`
 
     type User {
         id: String!,
-        name: String!,
-        currentBalanceProfile: BalanceProfile!,
-        actions: [Action]!,
-        week: Week!,
-        weekReports: [Week]!,
-        day: Day!,
-        dayReports: [Day]!,
+        name: String,
+        currentBalanceProfile: BalanceProfile,
+        actions: [Action],
+        week: Week,
+        weekReports: [Week],
+        day: Day,
+        dayReports: [Day],
         preferences: Preferences
     }
 
