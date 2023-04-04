@@ -11,9 +11,9 @@ export default async function db_createNewUser(email, id) {
     name: {S: ''},
     currentBalanceProfile: {M: { body: {N: '0'}, mind: {N: '0'} }},
     actions: {L: []},
-    week: {M: { pointsSet: {N: '0'}, pointsComplete: {N: '0'}, actionsComplete:{L: []}, startDate: {S: ''}, endDate: {S: ''} }},
+    week: {M: { pointsSet: {N: '0'}, pointsComplete: {N: '0'}, days:{L: []}, startDate: {S: ''}, endDate: {S: ''} }},
     weekReports: {L: []},
-    day: {M: { pointsSet: {N: '0'}, pointsComplete: {N: '0'}, actionsComplete:{L: []}, date: {S: ''} }},
+    today: {M: { pointsSet: {N: '0'}, pointsComplete: {N: '0'}, actionsComplete:{L: []}, actionsSet:{L: []},  shmate: {S: ''} }},
     dayReports: {L: []},
     preferences: {M: { 
         intensitySchedule: {M: {

@@ -1,6 +1,7 @@
 import db_createNewAction from "../services/create-new-action.js";
 import db_createNewUser from "../services/create-new-user.js";
 import db_getUserInfo from "../services/get-user-info.js";
+import { db_updateUserDay } from "../services/update-user-day.js";
 
 export const resolvers = {
     Query: {
@@ -20,6 +21,11 @@ export const resolvers = {
             console.log('Creating new user...')
 
             return await db_createNewUser(email, userId)
+        },
+        async updateUserDay(_, { id, pointsSet, pointsComplete, actionsSet, actionsComplete }) {
+            console.log('Updating user day...')
+
+            return await db_updateUserDay(id, pointsSet, pointsComplete, actionsSet, actionsComplete)
         }
     }
   };

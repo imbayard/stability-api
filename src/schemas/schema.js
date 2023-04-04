@@ -9,9 +9,8 @@ export const typeDefs = gql`
         actions: [Action],
         week: Week,
         weekReports: [Week],
-        day: Day,
-        dayReports: [Day],
-        preferences: Preferences
+        today: Day,
+        dayReports: [Day]
     }
 
     type BalanceProfile {
@@ -43,10 +42,16 @@ export const typeDefs = gql`
         active: Boolean!
     }
 
+    input ActionImplInput {
+        name: String!,
+        points: Int!,
+        category: String!
+    }
+
     type Week {
         pointsSet: Int!,
         pointsComplete: Int!,
-        actionsComplete: [ActionImpl]!
+        days: [Day]!
         startDate: String!,
         endDate: String!
     }
@@ -61,11 +66,8 @@ export const typeDefs = gql`
         pointsSet: Int!,
         pointsComplete: Int!,
         actionsComplete: [ActionImpl]!
-        date: String!
-    }
-
-    type Preferences {
-        intensitySchedule: IntensitySchedule!
+        actionsSet: [ActionImpl]!
+        shmate: String!
     }
 
     type IntensitySchedule {
@@ -85,5 +87,6 @@ export const typeDefs = gql`
     type Mutation {
         createNewAction(userId: String!, action: ActionInput!): Boolean!
         createNewUser(email: String!, userId: String!): Boolean!
+        updateUserDay(id: String!, pointsSet: Int, pointsComplete: Int, actionsSet: [ActionImplInput], actionsComplete: [ActionImplInput]): Boolean!
     }
 `
