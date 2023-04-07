@@ -24,7 +24,7 @@ export const resolvers = {
         },
         async updateUserDay(_, { id, pointsSet, pointsComplete, actionsSet, actionsComplete }) {
             console.log('Updating user day...')
-
+            console.log(`ACTIONS COMPLETE: ${actionsComplete}`)
             return await db_updateUserDay(id, pointsSet, pointsComplete, actionsSet, actionsComplete)
         }
     }

@@ -8,6 +8,7 @@ export default async function db_getUserInfo(id) {
 
     try {
         const result = await container.docClient.get(params).promise();
+        console.log(result.Item)
         return result.Item;
     } catch (error) {
         console.error('Error fetching userInfo:', error);
